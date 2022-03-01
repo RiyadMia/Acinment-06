@@ -1,9 +1,6 @@
 const searchPhone = () => {
     const searchFirld = document.getElementById('search-firld');
-    // clear data
     const searchText = searchFirld.value;
-
-
     if (searchText == '') {
         // place write someting to display
     }
@@ -40,12 +37,9 @@ const displayPhoneResult = data => {
 const lodePhoneDetails = slug => {
     const url = `
     https://openapi.programming-hero.com/api/phone/${slug}
-
     `
-
     fetch(url)
         .then(res => res.json())
-        // .then(phones => console.log(phones.data.mainFeatures))
         .then(phones => displayPhoneDetail(phones.data))
 }
 
@@ -73,12 +67,10 @@ const buttonDetails = slug => {
     `
     fetch(url)
         .then(res => res.json())
-        // .then(phones => console.log(phones.data.mainFeatures))
         .then(phones => displayButtonDetails(phones.data.mainFeatures))
 }
 const displayButtonDetails = phone => {
     const phoneDatails = document.getElementById('phone-details')
-    // phoneDatails.textContent = '';
     const div = document.createElement('div')
     div.classList.add('col');
     div.innerHTML = `  
@@ -88,8 +80,6 @@ const displayButtonDetails = phone => {
     <h1> chipSet : ${phone.chipSet}</h1>
     <h1> displaySize : ${phone.displaySize}</h1>
     <h1>  memory : ${phone.memory}</h1>
-  
- 
     </div>
     `
     phoneDatails.appendChild(div);
@@ -102,7 +92,6 @@ const buttonOthers = slug => {
     `
     fetch(url)
         .then(res => res.json())
-        //   .then(phones => console.log(phones.data.others))
         .then(phones => displayOtherDetails(phones.data.others))
 }
 
@@ -117,7 +106,10 @@ const displayOtherDetails = phone => {
     <h1>  GPS : ${phone.GPS}</h1>
     <h1>  NFC : ${phone.NFC}</h1>
     <h1>  Radio : ${phone.Radio}</h1>
-
+    <h1>  USB : ${phone.USB}</h1>
+    <h1> WLAN  : ${phone.WLAN}</h1>
+    <h1> releaseDate  : ${phone.releaseDate}</h1>
+    
     </div>
     `
     phoneDatails.appendChild(div);
