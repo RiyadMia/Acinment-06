@@ -1,10 +1,10 @@
-const notFound = document.getElementById('notFound')
+const notFound = document.getElementById('notFound');
 
 const searchPhone = () => {
     const searchFirld = document.getElementById('search-firld');
     const searchText = searchFirld.value;
     if (searchText == '') {
-        notFound.style.display = 'block'
+        notFound.style.display = 'block';
     }
     else {
         searchFirld.value = '';
@@ -13,16 +13,16 @@ const searchPhone = () => {
         `
         fetch(url)
             .then(res => res.json())
-            .then(data => displayPhoneResult(data.data))
+            .then(data => displayPhoneResult(data.data));
     }
 }
 const displayPhoneResult = data => {
-    const searchResult = document.getElementById('search-result')
+    const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
-    notFound.style.display = 'none'
-    const sliceResult = data.slice(0, 20)
+    notFound.style.display = 'none';
+    const sliceResult = data.slice(0, 20);
     sliceResult.forEach(phone => {
-        const div = document.createElement('div')
+        const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
     <div onclick="lodePhoneDetails('${phone.slug}')" class="card h-100">
@@ -33,7 +33,7 @@ const displayPhoneResult = data => {
     </div>
     </div>
     `
-        searchResult.appendChild(div)
+        searchResult.appendChild(div);
     })
 }
 
@@ -44,13 +44,13 @@ const lodePhoneDetails = slug => {
     `
     fetch(url)
         .then(res => res.json())
-        .then(phones => displayPhoneDetail(phones.data))
+        .then(phones => displayPhoneDetail(phones.data));
 }
 
 const displayPhoneDetail = phone => {
-    const phoneDatails = document.getElementById('phone-details')
+    const phoneDatails = document.getElementById('phone-details');
     phoneDatails.textContent = '';
-    const div = document.createElement('div')
+    const div = document.createElement('div');
     div.classList.add('col');
     div.innerHTML = `  
     <img src="${phone.image}" class="card-img-top" alt="...">
@@ -72,11 +72,11 @@ const buttonDetails = slug => {
     `
     fetch(url)
         .then(res => res.json())
-        .then(phones => displayButtonDetails(phones.data.mainFeatures))
+        .then(phones => displayButtonDetails(phones.data.mainFeatures));
 }
 const displayButtonDetails = phone => {
-    const phoneDatails = document.getElementById('phone-details')
-    const div = document.createElement('div')
+    const phoneDatails = document.getElementById('phone-details');
+    const div = document.createElement('div');
     div.classList.add('col');
     div.innerHTML = `  
     <div class="card-body">
@@ -105,12 +105,12 @@ const buttonOthers = slug => {
     `
     fetch(url)
         .then(res => res.json())
-        .then(phones => displayOtherDetails(phones.data.others))
+        .then(phones => displayOtherDetails(phones.data.others));
 }
 
 const displayOtherDetails = phone => {
-    const phoneDatails = document.getElementById('phone-details')
-    const div = document.createElement('div')
+    const phoneDatails = document.getElementById('phone-details');
+    const div = document.createElement('div');
     div.classList.add('col');
     div.innerHTML = `  
     <div class="card-body">
@@ -133,11 +133,11 @@ const relesButton = slug => {
     `
     fetch(url)
         .then(res => res.json())
-        .then(phones => displayRelesDate(phones.data.releaseDate))
+        .then(phones => displayRelesDate(phones.data.releaseDate));
 }
 const displayRelesDate = phone => {
-    const phoneDatails = document.getElementById('phone-details')
-    const div = document.createElement('div')
+    const phoneDatails = document.getElementById('phone-details');
+    const div = document.createElement('div');
     div.classList.add('col');
     div.innerHTML = `  
     <div class="card-body">
