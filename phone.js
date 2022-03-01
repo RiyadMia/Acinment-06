@@ -45,6 +45,7 @@ const lodePhoneDetails = slug => {
 
     fetch(url)
         .then(res => res.json())
+        // .then(phones => console.log(phones.data.mainFeatures))
         .then(phones => displayPhoneDetail(phones.data))
 }
 
@@ -59,7 +60,65 @@ const displayPhoneDetail = phone => {
     <h1 class="card-title">${phone.name}</h1>
     </div>
     </div>
-    
+    <button onclick="buttonDetails('${phone.slug}')"> Details </button>
+    <button onclick="buttonOthers('${phone.slug}')"> Others </button> 
+    `
+    phoneDatails.appendChild(div);
+}
+// ButtonDetails
+
+const buttonDetails = slug => {
+    const url = `
+    https://openapi.programming-hero.com/api/phone/${slug}
+    `
+    fetch(url)
+        .then(res => res.json())
+        // .then(phones => console.log(phones.data.mainFeatures))
+        .then(phones => displayButtonDetails(phones.data.mainFeatures))
+}
+const displayButtonDetails = phone => {
+    const phoneDatails = document.getElementById('phone-details')
+    // phoneDatails.textContent = '';
+    const div = document.createElement('div')
+    div.classList.add('col');
+    div.innerHTML = `  
+    <div class="card-body">
+    <h1> MainFeatures </h1>
+    <h1> storage : ${phone.storage}</h1>
+    <h1> chipSet : ${phone.chipSet}</h1>
+    <h1> displaySize : ${phone.displaySize}</h1>
+    <h1>  memory : ${phone.memory}</h1>
+  
+ 
+    </div>
+    `
+    phoneDatails.appendChild(div);
+}
+// ButtonOthers
+
+const buttonOthers = slug => {
+    const url = `
+    https://openapi.programming-hero.com/api/phone/${slug}
+    `
+    fetch(url)
+        .then(res => res.json())
+        //   .then(phones => console.log(phones.data.others))
+        .then(phones => displayOtherDetails(phones.data.others))
+}
+
+const displayOtherDetails = phone => {
+    const phoneDatails = document.getElementById('phone-details')
+    const div = document.createElement('div')
+    div.classList.add('col');
+    div.innerHTML = `  
+    <div class="card-body">
+    <h1> Others  </h1>
+    <h1> Bluetooth : ${phone.Bluetooth}</h1>
+    <h1>  GPS : ${phone.GPS}</h1>
+    <h1>  NFC : ${phone.NFC}</h1>
+    <h1>  Radio : ${phone.Radio}</h1>
+
+    </div>
     `
     phoneDatails.appendChild(div);
 }
