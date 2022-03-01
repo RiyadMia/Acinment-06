@@ -3,3 +3,10 @@
     text-align: center;
     display: none;
 }
+#button-search{
+    background-color: lightgray;
+    border: none;
+    margin-left: 10px;
+} 
+ 
+ 

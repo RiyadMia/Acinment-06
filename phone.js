@@ -62,7 +62,7 @@ const displayPhoneDetail = phone => {
     <h1 class="card-title">${phone.name}</h1>
     </div>
     <button onclick="buttonDetails('${phone.slug}')"> Details </button>
-    
+    <button onclick="sensorDetails('${phone.slug}')"> Sensor </button>
     <button onclick="buttonOthers('${phone.slug}')"> Others </button> 
     </div>
     `
@@ -89,6 +89,34 @@ const displayButtonDetails = phone => {
     <h1> chipSet : ${phone.chipSet}</h1>
     <h1> displaySize : ${phone.displaySize}</h1>
     <h1>  memory : ${phone.memory}</h1>
+    </div>
+    `
+    phoneDatails.appendChild(div);
+}
+
+// sensor
+const sensorDetails = slug => {
+    const url = `
+    https://openapi.programming-hero.com/api/phone/${slug}
+    `
+    fetch(url)
+        .then(res => res.json())
+        // .then(phones => console.log(phones.data.mainFeatures.sensors[0]))
+        .then(phones => displaySensorDetails(phones.data.mainFeatures))
+}
+const displaySensorDetails = phone => {
+    const phoneDatails = document.getElementById('phone-details')
+    const div = document.createElement('div')
+    div.classList.add('col');
+    div.innerHTML = `  
+    <div class="card-body">
+    <h1> Sensors  </h1>
+    <h1>1. ${phone.sensors[0]} </h1>
+    <h1>2. ${phone.sensors[1]} </h1>
+    <h1>3. ${phone.sensors[2]} </h1>
+    <h1>4. ${phone.sensors[3]} </h1>
+    <h1>5. ${phone.sensors[4]} </h1>
+    <h1>6. ${phone.sensors[5]} </h1>
     </div>
     `
     phoneDatails.appendChild(div);
